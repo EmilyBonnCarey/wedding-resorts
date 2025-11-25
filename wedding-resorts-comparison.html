@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding Resort Options</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 100%);
+            color: #5a5a5a;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #fff 0%, #ffe4e9 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #d4a5a5;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #8b7d7d;
+            font-style: italic;
+        }
+
+        .resort-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .resort-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .resort-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(212, 165, 165, 0.3);
+        }
+
+        .resort-header {
+            background: linear-gradient(135deg, #d4a5a5 0%, #b88b8b 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .resort-name {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .resort-location {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .resort-content {
+            padding: 30px;
+        }
+
+        .info-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .info-section:last-child {
+            border-bottom: none;
+        }
+
+        .info-title {
+            font-size: 1.3em;
+            color: #d4a5a5;
+            margin-bottom: 10px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-title::before {
+            content: "✦";
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+
+        .info-details {
+            color: #5a5a5a;
+            line-height: 1.8;
+            margin-left: 25px;
+        }
+
+        .highlight {
+            background: #fff5f7;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+            color: #b88b8b;
+        }
+
+        .price-range {
+            font-size: 1.1em;
+            color: #d4a5a5;
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4a5a5 0%, #b88b8b 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #b88b8b 0%, #9a7373 100%);
+            box-shadow: 0 5px 15px rgba(212, 165, 165, 0.4);
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-title {
+            font-size: 2.5em;
+            color: #d4a5a5;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        th {
+            background: #fff5f7;
+            color: #b88b8b;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        tr:hover {
+            background: #fffbfc;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            color: #856404;
+        }
+
+        .alert strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #8b7d7d;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .resort-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+        .icon {
+            margin-right: 8px;
+        }
+
+        .photo-gallery {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+            color: white;
+            padding: 10px;
+            font-size: 0.85em;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .photo-item:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        .view-gallery-btn {
+            display: inline-block;
+            background: #fff;
+            color: #d4a5a5;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+            border: 2px solid #d4a5a5;
+        }
+
+        .view-gallery-btn:hover {
+            background: #d4a5a5;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Our Wedding Destination</h1>
+            <p class="subtitle">Comparing Four Beautiful Resort Options</p>
+        </header>
+
+        <div class="resort-grid">
+            <!-- Riu Palace Antillas -->
+            <div class="resort-card">
+                <div class="resort-header">
+                    <h2 class="resort-name">Riu Palace Antillas</h2>
+                    <p class="resort-location">Palm Beach, Aruba</p>
+                </div>
+                <div class="resort-content">
+                    <div class="photo-gallery">
+                        <h3 class="info-title">Resort & Beach Photos</h3>
+                        <div class="photo-grid">
+                            <a href="https://www.destinationweddings.com/riu-palace-antillas" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=600&h=450&fit=crop" alt="Aruba Palm Beach">
+                                <div class="photo-overlay">Palm Beach View</div>
+                            </a>
+                            <a href="https://www.wedding-spot.com/venue/15448/riu-palace-antillas/" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=450&fit=crop" alt="Beach Wedding Setup">
+                                <div class="photo-overlay">Wedding Venue</div>
+                            </a>
+                            <a href="https://www.riuaruba.com/gallery.asp" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=600&h=450&fit=crop" alt="Resort View">
+                                <div class="photo-overlay">Resort Grounds</div>
+                            </a>
+                        </div>
+                        <a href="https://www.riu.com/en/hotel/aruba/palmbeach/hotel-riu-palace-antillas" class="view-gallery-btn" target="_blank">📸 View Full Photo Gallery</a>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Flight & Travel</h3>
+                        <div class="info-details">
+                            <p><strong>✈️ Airport:</strong> Queen Beatrix International (AUA)</p>
+                            <p><strong>🚗 Drive from Airport:</strong> <span class="highlight">10-15 minutes</span> (6 miles)</p>
+                            <p style="margin-top: 10px;"><strong>💰 Flight Prices & Times (for Jan 9, 2027):</strong></p>
+                            <p style="margin-left: 20px;">• <strong>Kansas City (MCI):</strong> <span class="price-range">$160 - $456</span> | ~6.5 hours</p>
+                            <p style="margin-left: 20px;">• <strong>San Antonio (SAT):</strong> <span class="price-range">$244 - $585</span> | ~6-7 hours</p>
+                            <p style="margin-left: 20px;">• <strong>Boise (BOI):</strong> <span class="price-range">$295 - $596</span> | ~10 hours</p>
+                            <p style="margin-top: 8px; font-size: 0.9em; font-style: italic;">No direct flights available - all require 1+ stops</p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Room Rates</h3>
+                        <div class="info-details">
+                            <p class="price-range">From $371 per night</p>
+                            <p>24-hour All-Inclusive • Adults Only (18+)</p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Wedding Packages</h3>
+                        <div class="info-details">
+                            <p><strong>Classic Collection:</strong> $1,499 (up to 10 guests)</p>
+                            <p><strong>Royal Collection:</strong> $2,799 (up to 20 guests)</p>
+                            <p><strong>Caprice Collection:</strong> $4,499 (up to 30 guests)</p>
+                            <p><strong>Indulgence Collection:</strong> $7,699 (up to 40 guests)</p>
+                            <p style="margin-top: 10px;"><em>Includes onsite wedding coordinator</em></p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Important Requirements</h3>
+                        <div class="info-details">
+                            <p>• Couple + 80% of guests must stay at the resort</p>
+                            <p>• Arrive 2 business days prior (symbolic) or 3 days (civil)</p>
+                            <p>• Located on exclusive Palm Beach</p>
+                        </div>
+                    </div>
+
+                    <a href="https://www.riu.com/en/hotel/aruba/palmbeach/hotel-riu-palace-antillas" class="btn" target="_blank">Visit Resort Website</a>
+                </div>
+            </div>
+
+            <!-- Barcelo Aruba -->
+            <div class="resort-card">
+                <div class="resort-header">
+                    <h2 class="resort-name">Barceló Aruba</h2>
+                    <p class="resort-location">Palm Beach, Aruba</p>
+                </div>
+                <div class="resort-content">
+                    <div class="photo-gallery">
+                        <h3 class="info-title">Resort & Beach Photos</h3>
+                        <div class="photo-grid">
+                            <a href="https://www.barcelo.com/en-us/barcelo-aruba/galleries/" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&h=450&fit=crop" alt="Barcelo Aruba Beach">
+                                <div class="photo-overlay">Beachfront</div>
+                            </a>
+                            <a href="https://www.wedding-spot.com/venue/15443/barcelo-aruba/" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=600&h=450&fit=crop" alt="Beach Wedding Ceremony">
+                                <div class="photo-overlay">Ceremony Setup</div>
+                            </a>
+                            <a href="https://destify.com/destinations/caribbean-islands/aruba/barcelo-aruba/" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=450&fit=crop" alt="Resort Pool">
+                                <div class="photo-overlay">Pool & Resort</div>
+                            </a>
+                        </div>
+                        <a href="https://www.barcelo.com/en-us/barcelo-aruba/galleries/" class="view-gallery-btn" target="_blank">📸 View Full Photo Gallery</a>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Flight & Travel</h3>
+                        <div class="info-details">
+                            <p><strong>✈️ Airport:</strong> Queen Beatrix International (AUA)</p>
+                            <p><strong>🚗 Drive from Airport:</strong> <span class="highlight">10-15 minutes</span> (6 miles)</p>
+                            <p style="margin-top: 10px;"><strong>💰 Flight Prices & Times (for Jan 9, 2027):</strong></p>
+                            <p style="margin-left: 20px;">• <strong>Kansas City (MCI):</strong> <span class="price-range">$160 - $456</span> | ~6.5 hours</p>
+                            <p style="margin-left: 20px;">• <strong>San Antonio (SAT):</strong> <span class="price-range">$244 - $585</span> | ~6-7 hours</p>
+                            <p style="margin-left: 20px;">• <strong>Boise (BOI):</strong> <span class="price-range">$295 - $596</span> | ~10 hours</p>
+                            <p style="margin-top: 8px; font-size: 0.9em; font-style: italic;">No direct flights available - all require 1+ stops</p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Room Rates</h3>
+                        <div class="info-details">
+                            <p class="price-range">$302 - $675 per night</p>
+                            <p>All-Inclusive • 5 Restaurants & Multiple Bars</p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Wedding Packages</h3>
+                        <div class="info-details">
+                            <p><strong>Simple Love Package:</strong> $1,949 or <span class="highlight">FREE</span></p>
+                            <p style="margin-left: 20px; font-size: 0.95em;">• Free with Royal Club Master Suite (7 nights), OR</p>
+                            <p style="margin-left: 20px; font-size: 0.95em;">• Free with 10 deluxe rooms (3 nights)</p>
+                            <p style="margin-top: 10px;"><strong>Additional Packages:</strong></p>
+                            <p>• Tropical Love: $500</p>
+                            <p>• Blueberry Dream: ~$850</p>
+                            <p>• Coconut Paradise: $1,275</p>
+                            <p style="margin-top: 10px;"><em>Accommodates up to 70 guests</em></p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Special Features</h3>
+                        <div class="info-details">
+                            <p>• Stunning white sand beach, turquoise waters</p>
+                            <p>• Dedicated team of wedding planners</p>
+                            <p>• $350-$500 deposit to secure date</p>
+                        </div>
+                    </div>
+
+                    <a href="https://www.barcelo.com/en-us/barcelo-aruba/" class="btn" target="_blank">Visit Resort Website</a>
+                </div>
+            </div>
+
+            <!-- Sandals Royal Bahamian -->
+            <div class="resort-card">
+                <div class="resort-header">
+                    <h2 class="resort-name">Sandals Royal Bahamian</h2>
+                    <p class="resort-location">Nassau, Bahamas</p>
+                </div>
+                <div class="resort-content">
+                    <div class="photo-gallery">
+                        <h3 class="info-title">Resort & Beach Photos</h3>
+                        <div class="photo-grid">
+                            <a href="https://www.sandals.com/royal-bahamian/photos/" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=600&h=450&fit=crop" alt="Bahamas Beach Resort">
+                                <div class="photo-overlay">Resort Beach</div>
+                            </a>
+                            <a href="https://www.wedding-spot.com/venue/15850/sandals-royal-bahamian/" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1522413452208-996ff3f3e740?w=600&h=450&fit=crop" alt="Over-water Wedding Gazebo">
+                                <div class="photo-overlay">Wedding Gazebo</div>
+                            </a>
+                            <a href="https://sagedesigncompany.com/tropical-beach-wedding-at-sandals-royal-bahamian-resort-in-nassau/" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1540206395-68808572332f?w=600&h=450&fit=crop" alt="Private Island">
+                                <div class="photo-overlay">Barefoot Cay Island</div>
+                            </a>
+                        </div>
+                        <a href="https://www.sandals.com/royal-bahamian/photos/" class="view-gallery-btn" target="_blank">📸 View Full Photo Gallery</a>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Flight & Travel</h3>
+                        <div class="info-details">
+                            <p><strong>✈️ Airport:</strong> Lynden Pindling International (NAS)</p>
+                            <p><strong>🚗 Drive from Airport:</strong> <span class="highlight">10-15 minutes</span> (4.6 miles)</p>
+                            <p><strong>🚌 Transfer:</strong> Complimentary airport transfers included!</p>
+                            <p style="margin-top: 10px;"><strong>💰 Flight Prices & Times (for Jan 9, 2027):</strong></p>
+                            <p style="margin-left: 20px;">• <strong>Kansas City (MCI):</strong> <span class="price-range">$164 - $481</span> | ~4.5-5 hours</p>
+                            <p style="margin-left: 20px;">• <strong>San Antonio (SAT):</strong> <span class="price-range">$131 - $368</span> | ~4.5-5 hours</p>
+                            <p style="margin-left: 20px;">• <strong>Boise (BOI):</strong> <span class="price-range">$165 - $498</span> | ~7.5-8 hours</p>
+                            <p style="margin-top: 8px; font-size: 0.9em; font-style: italic;">No direct flights - all require 1+ connections</p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Room Rates</h3>
+                        <div class="info-details">
+                            <p class="price-range">$300 - $880 per person/night</p>
+                            <p><strong>Sandals Luxury Rooms:</strong> From $300/person</p>
+                            <p><strong>Club Sandals Rooms:</strong> From $330/person</p>
+                            <p><strong>Butler Elite Suites:</strong> From $430/person</p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Wedding Packages</h3>
+                        <div class="info-details">
+                            <p class="price-range">$1,000 - $15,000+</p>
+                            <p><strong>Featured Package:</strong></p>
+                            <p>• Kiss Me At Twilight: $600</p>
+                            <p style="margin-top: 10px;">From complimentary "Beautiful Beginnings" to elaborate "Vision in White"</p>
+                            <p style="margin-top: 10px;"><em>Venues accommodate up to 200 guests</em></p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Luxury Amenities</h3>
+                        <div class="info-details">
+                            <p>• 10 specialty restaurants, 8 bars (3 swim-up)</p>
+                            <p>• 7 pools, 5 whirlpools</p>
+                            <p>• Private offshore island: Barefoot Cay</p>
+                            <p>• Red Lane Spa with Caribbean treatments</p>
+                            <p>• Scuba diving, water sports, tennis</p>
+                            <p>• Adults-only, couples resort</p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Group Benefits</h3>
+                        <div class="info-details">
+                            <p>• Book 5 rooms, get 6th FREE</p>
+                            <p>• Book 11 rooms, get 12th FREE</p>
+                            <p>• Book 10+ rooms, save up to 11%</p>
+                        </div>
+                    </div>
+
+                    <a href="https://www.sandals.com/royal-bahamian/" class="btn" target="_blank">Visit Resort Website</a>
+                </div>
+            </div>
+
+            <!-- Zoetry Villa Rolandi -->
+            <div class="resort-card">
+                <div class="resort-header">
+                    <h2 class="resort-name">Zoëtry Villa Rolandi</h2>
+                    <p class="resort-location">Isla Mujeres, Mexico</p>
+                </div>
+                <div class="resort-content">
+                    <div class="alert">
+                        <strong>⚠️ Important Notice:</strong>
+                        Property closed April 14, 2025 - December 31, 2026 for renovations. Only available for early 2025 dates.
+                    </div>
+
+                    <div class="photo-gallery">
+                        <h3 class="info-title">Resort & Beach Photos</h3>
+                        <div class="photo-grid">
+                            <a href="https://www.destinationweddings.com/zoetry-villa-rolandi-isla-mujeres-cancun" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=450&fit=crop" alt="Isla Mujeres Beach">
+                                <div class="photo-overlay">Isla Mujeres Beach</div>
+                            </a>
+                            <a href="https://delsolphotography.com/zoetry-villa-rolandi-isla-mujeres/" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=600&h=450&fit=crop" alt="Beach Pier Wedding">
+                                <div class="photo-overlay">Pier Ceremony</div>
+                            </a>
+                            <a href="https://www.hyattinclusivecollection.com/en/resorts-hotels/zoetry/mexico/villa-rolandi-isla-mujeres/" target="_blank" class="photo-item">
+                                <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&h=450&fit=crop" alt="Oceanfront Suite View">
+                                <div class="photo-overlay">Ocean View Suite</div>
+                            </a>
+                        </div>
+                        <a href="https://www.hyattinclusivecollection.com/en/resorts-hotels/zoetry/mexico/villa-rolandi-isla-mujeres/" class="view-gallery-btn" target="_blank">📸 View Full Photo Gallery</a>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Flight & Travel</h3>
+                        <div class="info-details">
+                            <p><strong>✈️ Airport:</strong> Cancun International (CUN)</p>
+                            <p><strong>🚗 Travel Time:</strong> <span class="highlight">~1 hour total</span></p>
+                            <p style="margin-left: 20px;">• 30 min drive to ferry terminal</p>
+                            <p style="margin-left: 20px;">• 20-30 min ferry to Isla Mujeres</p>
+                            <p><strong>🚤 Special:</strong> Resort offers private boat transfer (sometimes included)</p>
+                            <p style="margin-top: 10px;"><strong>💰 Flight Prices & Times (for Jan 9, 2027):</strong></p>
+                            <p style="margin-left: 20px;">• <strong>Kansas City (MCI):</strong> <span class="price-range">$250 - $450</span> | ~4-5 hours</p>
+                            <p style="margin-left: 20px;">• <strong>San Antonio (SAT):</strong> <span class="price-range">$103 - $301</span> | ~3 hours nonstop!</p>
+                            <p style="margin-left: 20px;">• <strong>Boise (BOI):</strong> <span class="price-range">$143 - $387</span> | ~6-7 hours</p>
+                            <p style="margin-top: 8px; font-size: 0.9em; font-style: italic;">San Antonio has nonstop flights on weekends! Others require connections.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Room Rates</h3>
+                        <div class="info-details">
+                            <p class="price-range">$628 - $1,309 per night</p>
+                            <p>35 Oceanfront Suites • All-Inclusive Wellness Resort</p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Wedding Packages</h3>
+                        <div class="info-details">
+                            <p class="price-range">From $1,449</p>
+                            <p><em>Or complimentary with certain stays</em></p>
+                            <p style="margin-top: 10px;"><strong>Includes:</strong></p>
+                            <p>• Free room night before ceremony for couple</p>
+                            <p>• Bouquet(s) and/or boutonniere(s)</p>
+                            <p>• Wedding cake & sparkling wine (up to 10 guests)</p>
+                            <p>• Special turndown service on wedding night</p>
+                            <p>• Late checkout for couple</p>
+                            <p>• Free anniversary nights</p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3 class="info-title">Ceremony Details</h3>
+                        <div class="info-details">
+                            <p>• Beach gazebo or private pier ceremonies</p>
+                            <p>• Maximum 1 wedding per day</p>
+                            <p>• Ceremonies between 11am - 4pm</p>
+                            <p>• Intimate setting with stunning Caribbean views</p>
+                        </div>
+                    </div>
+
+                    <a href="https://www.hyattinclusivecollection.com/en/resorts-hotels/zoetry/mexico/villa-rolandi-isla-mujeres/" class="btn" target="_blank">Visit Resort Website</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Comparison Table -->
+        <div class="comparison-table">
+            <h2 class="comparison-title">Quick Comparison</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #8b7d7d; font-style: italic;">Flight prices for January 9, 2027 departure</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Resort</th>
+                        <th>Location</th>
+                        <th>Room Rates</th>
+                        <th>Wedding Packages</th>
+                        <th>Kansas City Flights</th>
+                        <th>San Antonio Flights</th>
+                        <th>Boise Flights</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Riu Palace Antillas</strong></td>
+                        <td>Aruba (AUA)<br><span style="font-size: 0.9em; color: #888;">10-15 min from airport</span></td>
+                        <td>From $371/night</td>
+                        <td>$1,499 - $7,699</td>
+                        <td>$160 - $456</td>
+                        <td>$244 - $585</td>
+                        <td>$295 - $596</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Barceló Aruba</strong></td>
+                        <td>Aruba (AUA)<br><span style="font-size: 0.9em; color: #888;">10-15 min from airport</span></td>
+                        <td>$302 - $675/night</td>
+                        <td>$500 - $1,949<br><span style="font-size: 0.9em; color: #d4a5a5;">(or FREE)</span></td>
+                        <td>$160 - $456</td>
+                        <td>$244 - $585</td>
+                        <td>$295 - $596</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sandals Royal Bahamian</strong></td>
+                        <td>Bahamas (NAS)<br><span style="font-size: 0.9em; color: #888;">10-15 min from airport</span></td>
+                        <td>$300 - $880/person</td>
+                        <td>$1,000 - $15,000+</td>
+                        <td>$164 - $481</td>
+                        <td style="background: #f0ffe0;">$131 - $368</td>
+                        <td>$165 - $498</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zoëtry Villa Rolandi</strong></td>
+                        <td>Mexico (CUN)<br><span style="font-size: 0.9em; color: #888;">~1 hr to Isla Mujeres</span></td>
+                        <td>$628 - $1,309/night</td>
+                        <td>From $1,449</td>
+                        <td>$250 - $450</td>
+                        <td style="background: #f0ffe0;">$103 - $301<br><span style="font-size: 0.85em; color: #2a7c2e;">✓ Nonstop weekends</span></td>
+                        <td>$143 - $387</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 20px; font-size: 0.95em; color: #666; text-align: center;"><em>💡 Green highlights show the best flight prices from your cities!</em></p>
+        </div>
+
+        <footer>
+            <p>Created with love for your special day ♥</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">All prices are approximate and subject to change. Please contact resorts directly for current availability and pricing.</p>
+        </footer>
+    </div>
+</body>
+</html>
